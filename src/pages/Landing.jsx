@@ -61,23 +61,6 @@ const faqs = [
   },
 ]
 
-const testimonials = [
-  {
-    text: "Tried the free Accenture roadmap. Saved me 6 hours of Glassdoor reading — everything was already there, organized by round.",
-    name: 'Karthik R.',
-    college: '3rd year CSE, VIT Vellore',
-  },
-  {
-    text: "The TCS NQT 7-day plan is exactly what I needed. Clear, no fluff. I didn't even know what to study before this.",
-    name: 'Sneha P.',
-    college: 'Final year ECE, RVCE Bangalore',
-  },
-  {
-    text: "Most prep sites make you wade through thousands of questions. This just tells you which 30 actually show up. That's the difference.",
-    name: 'Arjun M.',
-    college: 'Final year IT, SRMIST',
-  },
-]
 
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false)
@@ -338,27 +321,6 @@ export default function Landing() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIALS ── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-24">
-        <div className="mb-12">
-          <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#7C3AED' }}>Early feedback</div>
-          <h2 className="text-3xl font-extrabold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0F0A1E' }}>
-            From people who used it
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {testimonials.map((t, i) => (
-            <div key={i} className="rounded-2xl p-6 flex flex-col justify-between" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E0DA', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: '#374151' }}>"{t.text}"</p>
-              <div>
-                <div className="text-sm font-bold" style={{ color: '#0F0A1E' }}>{t.name}</div>
-                <div className="text-xs mt-0.5" style={{ color: '#94A3B8' }}>{t.college}</div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 

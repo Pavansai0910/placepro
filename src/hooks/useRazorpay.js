@@ -41,8 +41,10 @@ export function useRazorpay() {
         theme: { color: '#F59E0B' },
         config: {
           display: {
-            // Disable Pay Later — no backend to track deferred payments
-            hide: [{ method: 'paylater' }],
+            hide: [
+              { method: 'paylater' },
+              { method: 'upi' },
+            ],
             preferences: { show_default_blocks: true },
           },
         },

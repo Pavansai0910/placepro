@@ -207,7 +207,7 @@ export const content = {
         {
           round: "Online NQT Assessment — Part A (Foundation)",
           duration: "75 minutes",
-          tests: "Quantitative Aptitude (20 Qs, 40 min), Verbal Ability (20 Qs, 35 min), Reasoning Ability (15 Qs, 40 min). Sectional cutoffs apply. No negative marking.",
+          tests: "Quantitative Aptitude (20 Qs, 30 min), Verbal Ability (20 Qs, 25 min), Reasoning Ability (15 Qs, 20 min). Sectional cutoffs apply — you cannot go back to a previous section. No negative marking.",
           tips: "Practice sectional time management. Avoid spending more than 2 minutes on any single aptitude question. Verbal section includes grammar and reading comprehension — practice daily.",
         },
         {
@@ -239,7 +239,7 @@ export const content = {
         aptitude: [
           "If A can complete work in 20 days and B in 30 days, how long will they take together? (Ans: 12 days)",
           "A train 120m long crosses a platform in 30s at 40 km/h. Find platform length. (Ans: 213.3m)",
-          "Two numbers have ratio 3:5. If 10 is added to both, ratio becomes 4:5. Find numbers. (Ans: 30, 50)",
+          "Two numbers have ratio 3:5. If 10 is added to both, ratio becomes 4:5. Find numbers. (Ans: 6 and 10; verify: 16:20 = 4:5 ✓)",
           "Find the missing number: 2, 6, 12, 20, ?, 42 (Ans: 30; pattern n×(n+1))",
           "Average of 5 numbers is 40. If one number is replaced by 60, new average = 50. What was the old number? (Ans: 10)",
           "A mixture has milk:water = 3:1. To make 1:1, how much water add to 12L mixture? (Ans: 6L)",
@@ -372,7 +372,7 @@ export const content = {
   wipro: {
     full: {
       processOverview: {
-        rounds: ["Online Assessment (128 min — Aptitude + Writing + Coding)", "Voice Assessment (Automated)", "HR Interview"],
+        rounds: ["Online Assessment (123 min — Aptitude 75 min + Writing 18 min + Coding 30 min)", "Voice Assessment / SVAR (Automated)", "HR Interview"],
         duration: "3–4 weeks end to end",
         eligibility: "60%+ or 6.0 CGPA in 10th, 12th, graduation; BE/BTech/ME/MTech (CS, IT, ECE); 2025/2026 batch",
         salary: "₹3.5 LPA (Project Engineer — Wipro Elite) | ₹6.5 LPA (Wipro Turbo)",
@@ -380,7 +380,7 @@ export const content = {
       roundBreakdown: [
         {
           round: "Online Assessment — Section A: Aptitude",
-          duration: "75 minutes",
+          duration: "75 minutes (25+25+25 across 3 sections)",
           tests: "Logical Ability (20 Qs, 25 min), Quantitative Ability (20 Qs, 25 min), English Verbal Ability (20 Qs, 25 min). No negative marking.",
           tips: "Wipro's logical section is tougher than TCS. Focus on pattern-based puzzles. Verbal section includes error spotting and fill-in-the-blanks — review grammar rules.",
         },

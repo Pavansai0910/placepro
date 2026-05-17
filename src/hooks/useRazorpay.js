@@ -43,7 +43,6 @@ export function useRazorpay() {
           display: {
             hide: [
               { method: 'paylater' },
-              { method: 'upi' },
             ],
             preferences: { show_default_blocks: true },
           },

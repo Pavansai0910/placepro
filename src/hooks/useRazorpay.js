@@ -39,6 +39,13 @@ export function useRazorpay() {
         name: 'PlacePro',
         description: `${packName} Pack — Placement Prep Kit`,
         theme: { color: '#F59E0B' },
+        config: {
+          display: {
+            // Disable Pay Later — no backend to track deferred payments
+            hide: [{ method: 'paylater' }],
+            preferences: { show_default_blocks: true },
+          },
+        },
         modal: {
           ondismiss() {
             resolve({ status: 'dismissed' })

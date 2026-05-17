@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import BuyButton from '../components/BuyButton'
+import { getAccess } from '../utils/access'
 
 const DEV = import.meta.env.DEV
 
@@ -99,6 +100,7 @@ function FaqItem({ q, a }) {
 }
 
 export default function Landing() {
+  const existingAccess = getAccess()
   return (
     <div style={{ backgroundColor: '#0A0F1E', minHeight: '100vh' }}>
       {/* Dev mode banner */}
@@ -122,13 +124,24 @@ export default function Landing() {
               Place<span style={{ color: '#F59E0B' }}>Pro</span>
             </span>
           </div>
-          <Link
-            to="/accenture-roadmap"
-            className="text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-            style={{ color: '#F59E0B', border: '1px solid #F59E0B' }}
-          >
-            Free Roadmap
-          </Link>
+          <div className="flex items-center gap-3">
+            {existingAccess && (
+              <Link
+                to={`/unlock?pack=${existingAccess.pack}`}
+                className="text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+                style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
+              >
+                My Pack →
+              </Link>
+            )}
+            <Link
+              to="/accenture-roadmap"
+              className="text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+              style={{ color: '#F59E0B', border: '1px solid #F59E0B' }}
+            >
+              Free Roadmap
+            </Link>
+          </div>
         </div>
       </nav>
 

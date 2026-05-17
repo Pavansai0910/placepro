@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRazorpay } from '../hooks/useRazorpay'
+import { saveAccess } from '../utils/access'
 
 const DEV = import.meta.env.DEV
 
@@ -27,7 +28,8 @@ export default function BuyButton({ pack, amountRupees, packName, className, sty
       amountPaise: amountRupees * 100,
       packName,
       onSuccess(response) {
-        navigate(`/unlock?pack=${pack}&payment_id=${response.razorpay_payment_id}`)
+        saveAccess(pack, response.razorpay_payment_id)
+        navigate(`/unlock?pack=${pack}`)
       },
       onError(msg) {
         setError(msg)

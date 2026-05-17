@@ -1,41 +1,35 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import BuyButton from '../components/BuyButton'
 
 const DEV = import.meta.env.DEV
-
-const STARTER_URL = DEV ? '/unlock?pack=starter' : (import.meta.env.VITE_RAZORPAY_STARTER_URL || 'https://rzp.io/l/placeholder-starter')
-const FULL_URL    = DEV ? '/unlock?pack=full'    : (import.meta.env.VITE_RAZORPAY_FULL_URL    || 'https://rzp.io/l/placeholder-full')
-const PREMIUM_URL = DEV ? '/unlock?pack=premium' : (import.meta.env.VITE_RAZORPAY_PREMIUM_URL || 'https://rzp.io/l/placeholder-premium')
-
-// In dev, render a router Link; in prod, render an external anchor
-function BuyButton({ url, className, style, children }) {
-  if (DEV) return <Link to={url} className={className} style={style}>{children}</Link>
-  return <a href={url} target="_blank" rel="noopener noreferrer" className={className} style={style}>{children}</a>
-}
 
 const pricingPlans = [
   {
     name: 'Starter',
+    pack: 'starter',
     price: '₹199',
+    amountRupees: 199,
     companies: ['TCS', 'Infosys', 'Wipro'],
     description: 'Perfect for mass recruiters',
-    url: STARTER_URL,
     highlighted: false,
   },
   {
     name: 'Full',
+    pack: 'full',
     price: '₹299',
+    amountRupees: 299,
     companies: ['TCS', 'Infosys', 'Wipro', 'Accenture', 'Cognizant'],
     description: 'Best value — 5 companies covered',
-    url: FULL_URL,
     highlighted: true,
   },
   {
     name: 'Premium',
+    pack: 'premium',
     price: '₹499',
+    amountRupees: 499,
     companies: ['TCS', 'Infosys', 'Wipro', 'Accenture', 'Cognizant', 'Zoho', 'Freshworks'],
     description: 'All 7 companies including product companies',
-    url: PREMIUM_URL,
     highlighted: false,
   },
 ]
@@ -238,8 +232,10 @@ export default function Landing() {
                 </li>
               </ul>
               <BuyButton
-                url={plan.url}
-                className="block w-full text-center py-3 rounded-xl font-bold text-sm transition-all"
+                pack={plan.pack}
+                amountRupees={plan.amountRupees}
+                packName={plan.name}
+                className="block w-full text-center py-3 rounded-xl font-bold text-sm transition-all cursor-pointer"
                 style={plan.highlighted
                   ? { backgroundColor: '#F59E0B', color: '#0A0F1E' }
                   : { border: '1px solid #F59E0B', color: '#F59E0B', backgroundColor: 'transparent' }

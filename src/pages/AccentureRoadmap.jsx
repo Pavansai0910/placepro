@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { content } from '../data/content'
+import BuyButton from '../components/BuyButton'
 
 const DEV = import.meta.env.DEV
-const STARTER_URL = DEV ? '/unlock?pack=starter' : (import.meta.env.VITE_RAZORPAY_STARTER_URL || 'https://rzp.io/l/placeholder-starter')
 
 const roadmap = content.accenture.roadmap
 
@@ -178,25 +178,15 @@ export default function AccentureRoadmap() {
             Want TCS + Infosys + Wipro kits too?
           </div>
           <p className="text-slate-400 text-sm mb-6">Get the Starter Pack — 3 companies, same depth as this Accenture guide.</p>
-          {DEV ? (
-            <Link
-              to={STARTER_URL}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all"
-              style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
-            >
-              Preview Starter Pack →
-            </Link>
-          ) : (
-            <a
-              href={STARTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all"
-              style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
-            >
-              Get Starter Pack — ₹199 →
-            </a>
-          )}
+          <BuyButton
+            pack="starter"
+            amountRupees={199}
+            packName="Starter"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all cursor-pointer"
+            style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
+          >
+            {DEV ? 'Preview Starter Pack →' : 'Get Starter Pack — ₹199 →'}
+          </BuyButton>
           <div className="mt-4">
             <Link to="/" className="text-slate-500 text-sm hover:text-slate-300 transition-colors">
               View all packs →
@@ -207,25 +197,15 @@ export default function AccentureRoadmap() {
 
       {/* Fixed sticky bottom bar on mobile */}
       <div className="fixed bottom-0 left-0 right-0 md:hidden z-50 p-4" style={{ backgroundColor: 'rgba(10,15,30,0.95)', borderTop: '1px solid rgba(245,158,11,0.3)', backdropFilter: 'blur(12px)' }}>
-        {DEV ? (
-          <Link
-            to={STARTER_URL}
-            className="block w-full text-center py-3 rounded-xl font-bold text-sm"
-            style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
-          >
-            Preview Starter Pack →
-          </Link>
-        ) : (
-          <a
-            href={STARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center py-3 rounded-xl font-bold text-sm"
-            style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
-          >
-            Want TCS + Infosys + Wipro too? ₹199 →
-          </a>
-        )}
+        <BuyButton
+          pack="starter"
+          amountRupees={199}
+          packName="Starter"
+          className="block w-full text-center py-3 rounded-xl font-bold text-sm cursor-pointer"
+          style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
+        >
+          {DEV ? 'Preview Starter Pack →' : 'Want TCS + Infosys + Wipro too? ₹199 →'}
+        </BuyButton>
       </div>
 
       {/* Footer */}

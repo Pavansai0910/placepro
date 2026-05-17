@@ -4,143 +4,148 @@ import { content } from '../data/content'
 import BuyButton from '../components/BuyButton'
 
 const DEV = import.meta.env.DEV
-
 const roadmap = content.accenture.roadmap
+
+const ROUND_COLORS = ['#7C3AED', '#2563EB', '#059669', '#DC2626']
 
 export default function AccentureRoadmap() {
   const [openDay, setOpenDay] = useState(null)
+  const [openHR, setOpenHR] = useState(null)
 
   return (
-    <div style={{ backgroundColor: '#0A0F1E', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#FAFAF7', minHeight: '100vh' }}>
+
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 border-b border-slate-800 backdrop-blur-md" style={{ backgroundColor: 'rgba(10,15,30,0.9)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-              Place<span style={{ color: '#F59E0B' }}>Pro</span>
-            </span>
+      <nav className="sticky top-0 z-50" style={{ backgroundColor: 'rgba(250,250,247,0.94)', backdropFilter: 'blur(12px)', borderBottom: '1px solid #E2E0DA' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+          <Link to="/" className="text-xl font-extrabold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0F0A1E' }}>
+            Place<span style={{ color: '#7C3AED' }}>Pro</span>
           </Link>
           <a
             href="#pricing-cta"
-            className="text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-            style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
+            className="text-sm font-bold px-4 py-2 rounded-lg"
+            style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}
           >
             Get Full Pack
           </a>
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-        {/* Header */}
-        <div className="mb-12 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            style={{ backgroundColor: 'rgba(245,158,11,0.15)', color: '#F59E0B', border: '1px solid rgba(245,158,11,0.3)' }}>
-            Free Resource — No Login Required
+      <main className="max-w-3xl mx-auto px-4 sm:px-6">
+
+        {/* ── HERO ── */}
+        <div className="pt-12 pb-10 border-b" style={{ borderColor: '#E2E0DA' }}>
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-5"
+            style={{ backgroundColor: '#F5F3FF', color: '#7C3AED', border: '1px solid #DDD6FE' }}
+          >
+            Free · No login · No email gate
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            Accenture Placement{' '}
-            <span style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Roadmap
-            </span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0F0A1E' }}>
+            Accenture ASE.<br />
+            <span style={{ color: '#7C3AED' }}>4 rounds.</span>{' '}
+            <span style={{ color: '#64748B', fontWeight: 500 }}>7 days.</span>
           </h1>
-          <p className="text-slate-400 text-lg">Complete guide to crack Accenture ASE selection — 4 rounds, real patterns, 7-day plan.</p>
+          <p className="text-base leading-relaxed max-w-xl" style={{ color: '#64748B' }}>
+            Most candidates fail at Round 1 because they don't know what's actually in it. This page changes that — exact rounds, what each tests, and a day-by-day plan.
+          </p>
         </div>
 
-        {/* Section 1: Interview Rounds Overview */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            1. Interview Rounds Overview
-          </h2>
-          <div className="space-y-4">
+        {/* ── THE 4 ROUNDS ── */}
+        <section className="py-10 border-b" style={{ borderColor: '#E2E0DA' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: '#94A3B8' }}>The process</p>
+          <div className="space-y-3">
             {roadmap.interviewRoundsOverview.map((r, i) => (
-              <div key={i} className="flex gap-4 items-start rounded-xl p-5" style={{ backgroundColor: '#1E293B', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
-                  style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}>
+              <div
+                key={i}
+                className="flex items-center gap-4 p-4 rounded-2xl"
+                style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E0DA' }}
+              >
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-extrabold flex-shrink-0"
+                  style={{ backgroundColor: ROUND_COLORS[i], color: '#FFFFFF' }}
+                >
                   {i + 1}
                 </div>
-                <div className="flex-1">
-                  <div className="font-semibold text-white">{r.round}</div>
-                  <div className="flex flex-wrap gap-3 mt-2">
-                    <span className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(245,158,11,0.15)', color: '#F59E0B' }}>
-                      ⏱ {r.duration}
-                    </span>
-                    <span className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.06)', color: '#94a3b8' }}>
-                      {r.type}
-                    </span>
-                  </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-sm" style={{ color: '#0F0A1E' }}>{r.round}</div>
+                  <div className="text-xs mt-0.5" style={{ color: '#94A3B8' }}>{r.type}</div>
+                </div>
+                <div
+                  className="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: '#F5F3FF', color: '#7C3AED' }}
+                >
+                  {r.duration}
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Section 2: What Each Round Tests */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            2. What Each Round Tests
-          </h2>
-          <div className="space-y-5">
+        {/* ── WHAT KILLS CANDIDATES ── */}
+        <section className="py-10 border-b" style={{ borderColor: '#E2E0DA' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#94A3B8' }}>What each round actually tests</p>
+          <p className="text-sm mb-6" style={{ color: '#94A3B8' }}>Not the official description — the real breakdown.</p>
+          <div className="space-y-4">
             {roadmap.whatEachRoundTests.map((r, i) => (
-              <div key={i} className="rounded-xl p-6" style={{ backgroundColor: '#1E293B', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                  <span className="text-sm px-2 py-0.5 rounded font-bold" style={{ backgroundColor: 'rgba(245,158,11,0.2)', color: '#F59E0B' }}>
-                    Round {i + 1}
-                  </span>
-                  {r.round}
-                </h3>
-                <p className="text-slate-300 text-sm leading-relaxed">{r.tests}</p>
+              <div key={i} className="rounded-2xl p-5" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E2E0DA' }}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold flex-shrink-0"
+                    style={{ backgroundColor: ROUND_COLORS[i], color: '#FFFFFF' }}
+                  >
+                    {i + 1}
+                  </div>
+                  <span className="font-semibold text-sm" style={{ color: '#0F0A1E' }}>{r.round}</span>
+                </div>
+                <p className="text-sm leading-relaxed pl-10" style={{ color: '#64748B' }}>{r.tests}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Section 3: 7-Day Prep Timeline */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            3. 7-Day Prep Timeline
+        {/* ── 7-DAY PLAN ── */}
+        <section className="py-10 border-b" style={{ borderColor: '#E2E0DA' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#94A3B8' }}>Your prep plan</p>
+          <h2 className="text-2xl font-extrabold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0F0A1E' }}>
+            7 days. One company. Zero guessing.
           </h2>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {roadmap.sevenDayPlan.map((day) => (
-              <div key={day.day} className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div key={day.day} className="rounded-2xl overflow-hidden" style={{ border: '1px solid #E2E0DA' }}>
                 <button
-                  className="w-full text-left px-6 py-4 flex justify-between items-center transition-colors"
-                  style={{ backgroundColor: openDay === day.day ? 'rgba(245,158,11,0.08)' : '#1E293B' }}
+                  className="w-full text-left px-5 py-4 flex items-center gap-4"
+                  style={{ backgroundColor: openDay === day.day ? '#F5F3FF' : '#FFFFFF' }}
                   onClick={() => setOpenDay(openDay === day.day ? null : day.day)}
                 >
-                  <div className="flex items-center gap-4">
-                    <span className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
-                      style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}>
-                      D{day.day}
-                    </span>
-                    <div className="text-left">
-                      <div className="font-semibold text-white text-sm">{day.focus}</div>
-                      <div className="text-slate-500 text-xs mt-0.5">{day.topics.length} topics</div>
-                    </div>
+                  <span
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-extrabold flex-shrink-0"
+                    style={{ backgroundColor: openDay === day.day ? '#7C3AED' : '#0F0A1E', color: '#FFFFFF' }}
+                  >
+                    D{day.day}
+                  </span>
+                  <div className="flex-1 text-left">
+                    <div className="font-semibold text-sm" style={{ color: '#0F0A1E' }}>{day.focus}</div>
+                    <div className="text-xs mt-0.5" style={{ color: '#94A3B8' }}>{day.topics.length} topics</div>
                   </div>
-                  <span style={{ color: '#F59E0B' }}>{openDay === day.day ? '−' : '+'}</span>
+                  <span style={{ color: '#7C3AED', fontWeight: 700 }}>{openDay === day.day ? '−' : '+'}</span>
                 </button>
                 {openDay === day.day && (
-                  <div className="px-6 pb-5 pt-4 border-t border-slate-700" style={{ backgroundColor: 'rgba(245,158,11,0.04)' }}>
-                    <div className="mb-4">
-                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Topics</div>
-                      <ul className="space-y-1.5">
-                        {day.topics.map((t, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
-                            <span style={{ color: '#F59E0B' }} className="mt-0.5 flex-shrink-0">→</span>
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Resources</div>
-                      <div className="flex flex-wrap gap-2">
-                        {day.resources.map((r, i) => (
-                          <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.06)', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.08)' }}>
-                            {r}
-                          </span>
-                        ))}
-                      </div>
+                  <div className="px-5 pb-5 pt-4" style={{ borderTop: '1px solid #DDD6FE', backgroundColor: '#FAFAF7' }}>
+                    <ul className="space-y-2 mb-4">
+                      {day.topics.map((t, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm" style={{ color: '#374151' }}>
+                          <span style={{ color: '#7C3AED', flexShrink: 0, marginTop: '2px' }}>→</span>
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-2">
+                      {day.resources.map((r, i) => (
+                        <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: '#EDE9FE', color: '#7C3AED' }}>
+                          {r}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -149,69 +154,82 @@ export default function AccentureRoadmap() {
           </div>
         </section>
 
-        {/* Section 4: Top 10 HR Questions */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            4. Top 10 HR Questions — With Sample Answers
+        {/* ── HR QUESTIONS ── */}
+        <section className="py-10 border-b" style={{ borderColor: '#E2E0DA' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#94A3B8' }}>HR round</p>
+          <h2 className="text-2xl font-extrabold mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0F0A1E' }}>
+            10 questions. With sample answers.
           </h2>
-          <div className="space-y-5">
+          <p className="text-sm mb-6" style={{ color: '#94A3B8' }}>Don't wing this round. These come up every time.</p>
+          <div className="space-y-2">
             {roadmap.hrQuestions.map((item, i) => (
-              <div key={i} className="rounded-xl p-6" style={{ backgroundColor: '#1E293B', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="flex items-start gap-3 mb-3">
-                  <span className="text-sm font-bold px-2 py-0.5 rounded flex-shrink-0" style={{ backgroundColor: 'rgba(245,158,11,0.2)', color: '#F59E0B' }}>
+              <div key={i} className="rounded-2xl overflow-hidden" style={{ border: '1px solid #E2E0DA' }}>
+                <button
+                  className="w-full text-left px-5 py-4 flex items-center gap-3"
+                  style={{ backgroundColor: openHR === i ? '#F5F3FF' : '#FFFFFF' }}
+                  onClick={() => setOpenHR(openHR === i ? null : i)}
+                >
+                  <span
+                    className="text-xs font-bold px-2 py-0.5 rounded flex-shrink-0"
+                    style={{ backgroundColor: openHR === i ? '#7C3AED' : '#EDE9FE', color: openHR === i ? '#FFFFFF' : '#7C3AED' }}
+                  >
                     Q{i + 1}
                   </span>
-                  <h3 className="font-semibold text-white text-sm">{item.question}</h3>
-                </div>
-                <div className="ml-9">
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Sample Answer</div>
-                  <p className="text-slate-300 text-sm leading-relaxed italic">"{item.sampleAnswer}"</p>
-                </div>
+                  <span className="font-semibold text-sm text-left" style={{ color: '#0F0A1E' }}>{item.question}</span>
+                  <span className="ml-auto flex-shrink-0" style={{ color: '#7C3AED', fontWeight: 700 }}>{openHR === i ? '−' : '+'}</span>
+                </button>
+                {openHR === i && (
+                  <div className="px-5 pb-5 pt-4" style={{ borderTop: '1px solid #DDD6FE', backgroundColor: '#FAFAF7' }}>
+                    <p className="text-sm leading-relaxed italic" style={{ color: '#374151' }}>"{item.sampleAnswer}"</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </section>
 
-        {/* Sticky bottom CTA */}
-        <div id="pricing-cta" className="rounded-2xl p-8 text-center" style={{ backgroundColor: '#1E293B', border: '2px solid rgba(245,158,11,0.3)' }}>
-          <div className="text-lg font-bold mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            Want TCS + Infosys + Wipro kits too?
+        {/* ── CTA ── */}
+        <section id="pricing-cta" className="py-12">
+          <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: '#0F0A1E', border: '1px solid rgba(124,58,237,0.3)' }}>
+            <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#A78BFA' }}>Want TCS + Infosys + Wipro too?</div>
+            <h3 className="text-xl font-extrabold text-white mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+              Get the Starter Pack
+            </h3>
+            <p className="text-sm mb-6" style={{ color: '#64748B' }}>3 more companies. Same depth. ₹99 one-time.</p>
+            <BuyButton
+              pack="starter"
+              amountRupees={99}
+              packName="Starter"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold cursor-pointer"
+              style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}
+            >
+              {DEV ? 'Preview Starter Pack →' : 'Get Starter Pack — ₹99 →'}
+            </BuyButton>
+            <div className="mt-4">
+              <Link to="/" className="text-sm transition-colors" style={{ color: '#475569' }}>
+                View all packs →
+              </Link>
+            </div>
           </div>
-          <p className="text-slate-400 text-sm mb-6">Get the Starter Pack — 3 companies, same depth as this Accenture guide.</p>
-          <BuyButton
-            pack="starter"
-            amountRupees={99}
-            packName="Starter"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all cursor-pointer"
-            style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
-          >
-            {DEV ? 'Preview Starter Pack →' : 'Get Starter Pack — ₹99 →'}
-          </BuyButton>
-          <div className="mt-4">
-            <Link to="/" className="text-slate-500 text-sm hover:text-slate-300 transition-colors">
-              View all packs →
-            </Link>
-          </div>
-        </div>
+        </section>
       </main>
 
-      {/* Fixed sticky bottom bar on mobile */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden z-50 p-4" style={{ backgroundColor: 'rgba(10,15,30,0.95)', borderTop: '1px solid rgba(245,158,11,0.3)', backdropFilter: 'blur(12px)' }}>
+      {/* Mobile sticky CTA */}
+      <div className="fixed bottom-0 left-0 right-0 md:hidden z-50 p-4" style={{ backgroundColor: 'rgba(250,250,247,0.96)', borderTop: '1px solid #E2E0DA', backdropFilter: 'blur(12px)' }}>
         <BuyButton
           pack="starter"
           amountRupees={99}
           packName="Starter"
           className="block w-full text-center py-3 rounded-xl font-bold text-sm cursor-pointer"
-          style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
+          style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}
         >
-          {DEV ? 'Preview Starter Pack →' : 'Want TCS + Infosys + Wipro too? ₹99 →'}
+          {DEV ? 'Preview Starter Pack →' : 'TCS + Infosys + Wipro kits — ₹99 →'}
         </BuyButton>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-800 py-8 mt-12 pb-24 md:pb-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-slate-600 text-xs">© 2025 PlacePro. Built for Indian freshers 🇮🇳</p>
+      <footer className="border-t py-8 mt-4 pb-24 md:pb-8" style={{ borderColor: '#E2E0DA' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <p className="text-xs" style={{ color: '#94A3B8' }}>© 2026 PlacePro. Built for Indian freshers 🇮🇳</p>
         </div>
       </footer>
     </div>

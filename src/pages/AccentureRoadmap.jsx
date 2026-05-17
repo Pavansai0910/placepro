@@ -180,12 +180,12 @@ export default function AccentureRoadmap() {
           <p className="text-slate-400 text-sm mb-6">Get the Starter Pack — 3 companies, same depth as this Accenture guide.</p>
           <BuyButton
             pack="starter"
-            amountRupees={199}
+            amountRupees={99}
             packName="Starter"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all cursor-pointer"
             style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
           >
-            {DEV ? 'Preview Starter Pack →' : 'Get Starter Pack — ₹199 →'}
+            {DEV ? 'Preview Starter Pack →' : 'Get Starter Pack — ₹99 →'}
           </BuyButton>
           <div className="mt-4">
             <Link to="/" className="text-slate-500 text-sm hover:text-slate-300 transition-colors">
@@ -199,12 +199,12 @@ export default function AccentureRoadmap() {
       <div className="fixed bottom-0 left-0 right-0 md:hidden z-50 p-4" style={{ backgroundColor: 'rgba(10,15,30,0.95)', borderTop: '1px solid rgba(245,158,11,0.3)', backdropFilter: 'blur(12px)' }}>
         <BuyButton
           pack="starter"
-          amountRupees={199}
+          amountRupees={99}
           packName="Starter"
           className="block w-full text-center py-3 rounded-xl font-bold text-sm cursor-pointer"
           style={{ backgroundColor: '#F59E0B', color: '#0A0F1E' }}
         >
-          {DEV ? 'Preview Starter Pack →' : 'Want TCS + Infosys + Wipro too? ₹199 →'}
+          {DEV ? 'Preview Starter Pack →' : 'Want TCS + Infosys + Wipro too? ₹99 →'}
         </BuyButton>
       </div>
 

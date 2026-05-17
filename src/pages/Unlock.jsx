@@ -7,8 +7,8 @@ import BuyButton from '../components/BuyButton'
 const DEV = import.meta.env.DEV
 
 const PACK_DETAILS = {
-  starter: { label: 'Starter Pack', price: '₹199', amount: 199, companies: ['TCS', 'Infosys', 'Wipro'] },
-  full:    { label: 'Full Pack',    price: '₹299', amount: 299, companies: ['TCS', 'Infosys', 'Wipro', 'Accenture', 'Cognizant'] },
+  starter: { label: 'Starter Pack', price: '₹99',  amount: 99,  companies: ['TCS', 'Infosys', 'Wipro'] },
+  full:    { label: 'Full Pack',    price: '₹149', amount: 149, companies: ['TCS', 'Infosys', 'Wipro', 'Accenture', 'Cognizant'] },
   premium: { label: 'Premium Pack', price: '₹499', amount: 499, companies: ['All 7 companies'] },
 }
 

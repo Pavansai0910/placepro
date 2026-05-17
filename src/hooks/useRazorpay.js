@@ -23,37 +23,41 @@ export function useRazorpay() {
     loadScript().then((ok) => { loaded.current = ok })
   }, [])
 
+  // Returns a promise that resolves once the modal closes (any outcome)
   async function openCheckout({ amountPaise, packName, onSuccess, onError }) {
     const ok = loaded.current || await loadScript()
     if (!ok || !window.Razorpay) {
       onError?.('Razorpay failed to load. Please refresh and try again.')
-      return
+      return { status: 'load_error' }
     }
 
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-      amount: amountPaise,
-      currency: 'INR',
-      name: 'PlacePro',
-      description: `${packName} — Placement Prep Kit`,
-      image: '',
-      theme: { color: '#F59E0B' },
-      modal: {
-        backdropclose: false,
-        escape: true,
-      },
-      prefill: {},
-      handler(response) {
-        // response contains payment_id — no server verification in this setup
-        onSuccess?.(response)
-      },
-    }
+    return new Promise((resolve) => {
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount: amountPaise,
+        currency: 'INR',
+        name: 'PlacePro',
+        description: `${packName} Pack — Placement Prep Kit`,
+        theme: { color: '#F59E0B' },
+        modal: {
+          ondismiss() {
+            resolve({ status: 'dismissed' })
+          },
+        },
+        handler(response) {
+          resolve({ status: 'success' })
+          onSuccess?.(response)
+        },
+      }
 
-    const rzp = new window.Razorpay(options)
-    rzp.on('payment.failed', (response) => {
-      onError?.(response.error?.description || 'Payment failed. Please try again.')
+      const rzp = new window.Razorpay(options)
+      rzp.on('payment.failed', (response) => {
+        const msg = response.error?.description || 'Payment failed. Please try again.'
+        resolve({ status: 'failed' })
+        onError?.(msg)
+      })
+      rzp.open()
     })
-    rzp.open()
   }
 
   return { openCheckout }
